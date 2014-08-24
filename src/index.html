@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Angular Test App</title>
+<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="../bower_components/angular-route/angular-route.min.js"></script>
+<script src="../bower_components/angular-ui-bootstrap/dist/ui-bootstrap-0.11.0.min.js"></script>
+<script src="../bower_components/ngstorage/ngStorage.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/routes.js"></script>
+<script src="modules/default/default.js"></script>
+<script src="modules/hello/hello.js"></script>
+<script src="modules/projects/projects.js"></script>
+<style>
+  .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+</style>
+</head>
+<body ng-app="app">
+  
+  <div ng-controller="defaultController" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#/">Angular</a>
+        <button ng-click="isCollapsed = !isCollapsed" type="button" class="navbar-toggle">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div id="navbar-main" collapse="isCollapsed" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="#/">Home</a></li>
+          <li><a href="#/hello">Say Hi!</a></li>
+          <li><a href="#/projects">Projects</a></li>
+          <li ng-repeat="module in modules" class="dropdown" on-toggle="toggled(open)">
+            <a id="themes" href="#" data-toggle="dropdown" class="dropdown-toggle">{{module.name}} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li ng-repeat-start="link in module.links"><a href="{{link.target}}">{{link.text}}</a></li>
+              <li ng-repeat-end ng-show="link.divider" class="divider"></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Hello, Administrator</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container" style="margin-top: 5em">
+    <div ng-view></div>
+  </div>
+  
+  <script type="text/ng-template" id="home">
+    You are on Homepage
+  </script>
+  
+</body>
+</html>

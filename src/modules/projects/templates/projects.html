@@ -1,0 +1,33 @@
+<div class="row" style="margin-bottom: 10px">
+  <div class="col-md-4">
+    <form class="form" ng-submit="add()">
+      <div class="input-group">
+        <input ng-model="domain" type="text" class="form-control" placeholder="Quick create : enter your domain">
+        <span class="input-group-btn">
+          <button class="btn btn-primary" type="button">Create!</button>
+        </span>
+      </div>  
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Domain</th>
+          <th><span class="fa fa-cogs"></span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="project in projects">
+          <td>{{$index + 1}}</td>
+          <td>{{project.domain}}</td>
+          <td><button ng-click="remove($index)" class="btn btn-danger">remove</button></td>
+        </tr>
+      </tbody>
+    </table>  
+  </div>
+</div>
+
